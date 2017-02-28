@@ -28,7 +28,7 @@ $(document).ready(function()
 
 	function isOneOperandOperator(n) 
 	{
-  		return n == "SQRT" || n == "log";
+  		return n == "SQRT" || n == "log" || n == "SQRD";
 	}
 
 	function isTwoOperandOperator(n) 
@@ -84,7 +84,13 @@ $(document).ready(function()
 					$('#question').prepend("log(");
 					$('#question').append(")");					
 				}
-
+				
+				else if (operator == "SQRD")
+				{
+					answer = SQRD(first_operand);
+					$('#question').prepend("sqrd(");
+					$('#question').append(")");
+				}
 				$('#question').append(" =");
 				$('#answer').append(answer).hide().fadeIn(1000);				
 			}
@@ -118,7 +124,6 @@ $(document).ready(function()
 					answer = add(parseInt(first_operand), parseInt(second_operand));	
 				else if (operator == "^")
 					answer = power(parseInt(first_operand), parseInt(second_operand));	
-
 				$('#question').append(" =");
 				$('#answer').append(answer).hide().fadeIn(1000);
 				state = 2;
